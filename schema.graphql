@@ -1,0 +1,34 @@
+type Author {
+  id: ID!
+  name: String!
+  nationality: String!
+}
+type Book {
+id: ID!
+name: String!
+author: ID!
+isbn: String!
+year: String!
+}
+
+type Loan {
+    id: ID!
+    book: ID!
+    user: String!
+    dateloan: String!
+    dateback: String!
+}
+
+type Query {
+  allAuthors: [Author!]!
+  allBooks: [Book!]!
+  allLoans: [Loan!]!
+  bookById(id: ID!): Book! 
+}
+
+type Mutation {
+  createAuthor(name: String!, nationality: String!): Author! # Si deseas mantener esta mutación
+  updateAuthor(id: ID!, name: String, nationality: String): Author!
+  createBook(name: String!, author: ID!, isbn: String!, year: String!): Book!
+  createLoan(book:ID!, user: String!, dateloan: String!, dateback: String!): Loan!
+}
